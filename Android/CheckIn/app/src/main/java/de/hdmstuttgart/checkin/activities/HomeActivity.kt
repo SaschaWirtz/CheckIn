@@ -13,12 +13,12 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        nfcAdapter = android.nfc.NfcAdapter.getDefaultAdapter(this)
+//        nfcAdapter = android.nfc.NfcAdapter.getDefaultAdapter(this)
 
-        if(nfcAdapter == null){
-            Toast.makeText(this, "This device does not support NFC", Toast.LENGTH_SHORT).show()
-            finish()
-        }
+//        if(nfcAdapter == null){
+//            Toast.makeText(this, "This device does not support NFC", Toast.LENGTH_SHORT).show()
+//            finish()
+//        }
 
     }
 }
