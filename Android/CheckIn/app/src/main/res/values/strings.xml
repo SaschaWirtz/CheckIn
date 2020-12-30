@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CheckIn</string>
+    <string name="nfc_error">No NFC Tag Detected</string>
 </resources>
