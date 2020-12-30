@@ -1,7 +1,8 @@
-package de.hdmstuttgart.checkin
+package de.hdmstuttgart.checkin.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import de.hdmstuttgart.checkin.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
