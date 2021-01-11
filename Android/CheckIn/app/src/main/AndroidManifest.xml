@@ -11,7 +11,6 @@
         android:theme="@style/Theme.CheckIn">
         <activity android:name=".activities.StatisticsActivity"/>
         <activity android:name=".activities.SettingsActivity" />
-<<<<<<< Updated upstream
         <activity android:name=".activities.HomeActivity" />
         <activity android:name=".activities.SplashScreen" android:theme="@style/SplashScreenTheme">
             <intent-filter>
@@ -20,11 +19,6 @@
                 <data android:mimeType="text/plain" />
             </intent-filter>
             <intent-filter>
-=======
-        <activity android:name=".activities.SplashScreen"/>
-        <activity android:name=".activities.HomeActivity" >
-            <intent-filter>
->>>>>>> Stashed changes
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>

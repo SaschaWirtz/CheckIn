@@ -1,24 +1,17 @@
 package de.hdmstuttgart.checkin.activities
 
-<<<<<<< Updated upstream
 import android.content.Intent
-=======
 import android.app.PendingIntent
-import android.content.Intent
 import android.content.IntentFilter
 import android.nfc.NdefMessage
 import android.nfc.NdefRecord
->>>>>>> Stashed changes
 import android.nfc.NfcAdapter
 import android.nfc.Tag
 import android.nfc.tech.NfcF
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-<<<<<<< Updated upstream
 import android.widget.Button
-=======
 import android.widget.TextView
->>>>>>> Stashed changes
 import android.widget.Toast
 import de.hdmstuttgart.checkin.R
 import de.hdmstuttgart.checkin.nfc.MyMifareUltralightTagTester
@@ -39,25 +32,23 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-<<<<<<< Updated upstream
 
         findViewById<Button>(R.id.statistics).setOnClickListener {
             val intent = Intent(this, StatisticsActivity::class.java)
             startActivity(intent)
         }
 
-        nfcAdapter = android.nfc.NfcAdapter.getDefaultAdapter(this)
-=======
+        adapter = android.nfc.NfcAdapter.getDefaultAdapter(this)
+
         initViews()
 
         myMifareRW = MyMifareUltralightTagTester()
         adapter = NfcAdapter.getDefaultAdapter(this)
 
         //Checking if nfc is enabled on the device
-        if (!adapter?.isEnabled!!) {
+        if (!adapter.isEnabled) {
             Toast.makeText(this,"NFC disabled on this device.", Toast.LENGTH_SHORT).show()
         }
->>>>>>> Stashed changes
 
         //Prevent default nfc discover page from android to appear
         val intent = Intent(this, javaClass).apply {
