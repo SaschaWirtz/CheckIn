@@ -9,7 +9,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/yellow"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="110dp"
-        tools:layout_editor_absoluteY="128dp"/>
+        tools:layout_editor_absoluteY="128dp" >
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/history"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

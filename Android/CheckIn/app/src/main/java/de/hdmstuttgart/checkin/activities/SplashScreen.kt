@@ -11,6 +11,7 @@ class SplashScreen : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         val runnable: Runnable = Runnable {
+            Thread.sleep(1000)
             val intent = Intent(this,HomeActivity::class.java)
             startActivity(intent)
         }

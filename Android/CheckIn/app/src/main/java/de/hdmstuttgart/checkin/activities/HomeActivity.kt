@@ -38,6 +38,11 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        findViewById<Button>(R.id.settingsButton).setOnClickListener {
+            val intent = Intent(this, SettingsActivity::class.java)
+            startActivity(intent)
+        }
+
         adapter = android.nfc.NfcAdapter.getDefaultAdapter(this)
 
         initViews()
