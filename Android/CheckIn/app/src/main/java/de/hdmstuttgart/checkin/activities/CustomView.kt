@@ -14,11 +14,12 @@ import de.hdmstuttgart.checkin.db.CheckInEntity
 
 class CustomView : ConstraintLayout {
 
+    // setting the values for every textview
     var checkIn: CheckInEntity? = null
         set(checkIn: CheckInEntity?) {
             field = checkIn
             findViewById<TextView>(R.id.room).text = field!!.NfcTag
-            findViewById<TextView>(R.id.date).text = field!!.CheckInDate.split(" ") [0]
+            findViewById<TextView>(R.id.date).text = field!!.CheckInDate.split(" ") [0]            // date and time came in one String they needed to be split
             findViewById<TextView>(R.id.time).text = field!!.CheckInDate.split(" ") [1]
         }
 

@@ -44,11 +44,11 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
+        // giving the buttons the intent they needed to switch activities
         findViewById<ImageView>(R.id.statisticsButton).setOnClickListener {
             val intent = Intent(this, StatisticsActivity::class.java)
             startActivity(intent)
         }
-
         findViewById<ImageView>(R.id.settingsButton).setOnClickListener {
             val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
