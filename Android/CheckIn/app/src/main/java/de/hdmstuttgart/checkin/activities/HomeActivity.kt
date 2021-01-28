@@ -12,7 +12,6 @@ import android.nfc.tech.NfcF
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -24,7 +23,6 @@ import de.hdmstuttgart.checkin.db.CheckInDatabase
 import de.hdmstuttgart.checkin.db.CheckInEntity
 import de.hdmstuttgart.checkin.nfc.MyMifareUltralightTagTester
 import java.lang.NullPointerException
-import java.util.*
 
 class HomeActivity : AppCompatActivity() {
 
@@ -98,7 +96,7 @@ class HomeActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
-        var tagFromIntent: Tag? = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG)
+        val tagFromIntent: Tag? = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG)
         if(tagFromIntent != null){
             //Since this is only a base to work with you need to hardcode if you want to read or write
             if (doWrite) {
@@ -123,11 +121,10 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    fun insertDataToDatabase(nfcTagData: String){
+    private fun insertDataToDatabase(nfcTagData: String){
         val current = Calendar.getInstance().time
         val currentDateString = current.toLocaleString()
         val newEntity = CheckInEntity(currentDateString, nfcTagData)
         checkInDao.addCheckIn(newEntity)
     }
-
 }
