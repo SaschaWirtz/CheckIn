@@ -6,4 +6,10 @@
     <string name="statistics_button">Statistics</string>
     <string name="back_button">Back</string>
     <string name="delete_button">Delete</string>
+    <string name="checkin_header">heckIn</string>
+    <string name="statics_button_description">Statistics button</string>
+    <string name="settings_button_description">Settings button</string>
+    <string name="home_center_graphic">Center graphic</string>
+    <string name="home_center_graphic_background">Center graphic background</string>
+    <string name="home_center_textview_preset">Please scan a NFC tag!</string>
 </resources>
