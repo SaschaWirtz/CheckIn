@@ -29,6 +29,9 @@ class HomeActivity : AppCompatActivity() {
     //Setting nfc action
     private val doWrite = false
 
+    //Variable that can deny the execution of a write, to prevent duplicated rooms
+    private var doAgain = true
+
     private lateinit var adapter: NfcAdapter
     private lateinit var myMifareRW: MyMifareUltralightTagTester
     private lateinit var resultText: TextView
@@ -52,6 +55,7 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        //Checking if the devices has NFC and if its enabled
         try{
             adapter = android.nfc.NfcAdapter.getDefaultAdapter(this)
         }catch(e: NullPointerException){
@@ -61,8 +65,10 @@ class HomeActivity : AppCompatActivity() {
 
         initViews()
 
+        //Init the adapters
         myMifareRW = MyMifareUltralightTagTester()
         adapter = NfcAdapter.getDefaultAdapter(this)
+        checkInDao = Room.databaseBuilder(this, CheckInDatabase::class.java, "checkIn_database").allowMainThreadQueries().build().checkInDao()
 
         //Prevent default nfc discover page from android to appear
         val intent = Intent(this, javaClass).apply {
@@ -85,6 +91,7 @@ class HomeActivity : AppCompatActivity() {
 
     public override fun onPause() {
         super.onPause()
+        //Prioritize the current activity
         adapter.disableForegroundDispatch(this)
     }
 
@@ -93,27 +100,35 @@ class HomeActivity : AppCompatActivity() {
         adapter.enableForegroundDispatch(this, pendingIntent, intentFiltersArray, techListsArray)
     }
 
+    //When a NFC tag is discovered
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         val tagFromIntent: Tag? = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG)
         if(tagFromIntent != null){
             //Since this is only a base to work with you need to hardcode if you want to read or write
-            if (doWrite) {
-                val data = "SomeData"
+            if (doWrite && doAgain) {
+                val data = "Room001"
+                //Writing the data as simple as possible onto the NFC tags as Bytes
                 val defRecord: NdefRecord = NdefRecord.createMime(data, data.toByteArray())
                 val defMessage = NdefMessage(arrayOf(defRecord))
-                myMifareRW.writeTag(tagFromIntent, defMessage)
-                Toast.makeText(this, "write successful", Toast.LENGTH_SHORT).show()
+                if(myMifareRW.writeTag(tagFromIntent, defMessage)){
+                    Toast.makeText(this, "write successful", Toast.LENGTH_SHORT).show()
+                    //After successfully writing onto the NFC tag the next discovered NFC tag will be only scanned to hinder duplicates
+                    doAgain = false
+                }else{
+                    Toast.makeText(this, "write unsuccessful", Toast.LENGTH_SHORT).show()
+                }
             }
             else{
-                myMifareRW.readTag(intent ,tagFromIntent, resultText)
+                //Read out the data stored on the NFC tag
+                val data = myMifareRW.readTag(intent ,tagFromIntent, resultText)
+                //Run database query's on a different thread to keep the programming running fluent
                 Thread(Runnable {
 
-                    checkInDao = Room.databaseBuilder(this, CheckInDatabase::class.java, "checkIn_database").allowMainThreadQueries().build().checkInDao()
-
                     this.runOnUiThread(Runnable {
-                        insertDataToDatabase(resultText.text.toString())
+                        //Write the data into the database
+                        insertDataToDatabase(data)
                     })
 
                 }).run()
@@ -122,9 +137,12 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun insertDataToDatabase(nfcTagData: String){
+        //Get current date and time for the accesses time when the NFC tag was discovered
         val current = Calendar.getInstance().time
+        //Using a old function that is deprecated because our test device was running api level 24
         val currentDateString = current.toLocaleString()
         val newEntity = CheckInEntity(currentDateString, nfcTagData)
+        //Adding the created entity to the database via room
         checkInDao.addCheckIn(newEntity)
     }
 }

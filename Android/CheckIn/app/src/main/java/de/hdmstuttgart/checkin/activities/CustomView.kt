@@ -1,15 +1,10 @@
 package de.hdmstuttgart.checkin.activities
 
-import android.app.Activity
 import android.content.Context
 import android.util.AttributeSet
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.recyclerview.widget.RecyclerView
-import androidx.room.Room
 import de.hdmstuttgart.checkin.R
-import de.hdmstuttgart.checkin.db.CheckInDao
 import de.hdmstuttgart.checkin.db.CheckInEntity
 
 class CustomView : ConstraintLayout {

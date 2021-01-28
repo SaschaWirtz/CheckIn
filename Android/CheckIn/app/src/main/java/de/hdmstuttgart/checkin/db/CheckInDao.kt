@@ -5,6 +5,8 @@ import androidx.room.*
 @Dao
 interface CheckInDao {
 
+    //Creating functions combined with sql query's using the room function
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun addCheckIn(checkInEntity: CheckInEntity)
 

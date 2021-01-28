@@ -10,6 +10,7 @@ class SplashScreen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
+        //Waiting for the rest of the app to finish loading
         val runnable: Runnable = Runnable {
             val intent = Intent(this,HomeActivity::class.java)
             startActivity(intent)
