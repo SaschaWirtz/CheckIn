@@ -12,9 +12,8 @@ import android.nfc.tech.NfcF
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.format.Time
-import android.util.Log
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
@@ -25,10 +24,6 @@ import de.hdmstuttgart.checkin.db.CheckInDatabase
 import de.hdmstuttgart.checkin.db.CheckInEntity
 import de.hdmstuttgart.checkin.nfc.MyMifareUltralightTagTester
 import java.lang.NullPointerException
-import java.time.Instant
-import java.time.LocalDate
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 class HomeActivity : AppCompatActivity() {
@@ -49,8 +44,13 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        findViewById<Button>(R.id.statistics).setOnClickListener {
+        findViewById<ImageView>(R.id.statisticsButton).setOnClickListener {
             val intent = Intent(this, StatisticsActivity::class.java)
+            startActivity(intent)
+        }
+
+        findViewById<ImageView>(R.id.settingsButton).setOnClickListener {
+            val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
         }
 

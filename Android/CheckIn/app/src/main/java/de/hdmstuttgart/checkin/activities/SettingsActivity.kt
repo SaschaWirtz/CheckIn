@@ -9,9 +9,9 @@ import de.hdmstuttgart.checkin.R
 class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_stettings)
+        setContentView(R.layout.activity_settings)
 
-        findViewById<Button>(R.id.backButton).setOnClickListener {
+        findViewById<Button>(R.id.backButtonSettings).setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
         }

@@ -14,9 +14,24 @@
         tools:layout_editor_absoluteX="110dp"
         tools:layout_editor_absoluteY="128dp" >
 
+        <Button
+            android:id="@+id/backButtonStatistics"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="10"
+            android:text="@string/back_button" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/history"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_weight="10000" />
+
+        <Button
+            android:id="@+id/deleteButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="10"
+            android:text="@string/delete_button" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

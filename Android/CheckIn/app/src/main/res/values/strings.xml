@@ -2,5 +2,8 @@
     <string name="app_name">CheckIn</string>
     <string name="nfc_error">No NFC Tag Detected</string>
     <string name="checkin_logo">CheckIn logo</string>
-    <string name="settings_icon">⚙️</string>
+    <string name="settings_icon">Settings️</string>
+    <string name="statistics_button">Statistics</string>
+    <string name="back_button">Back</string>
+    <string name="delete_button">Delete</string>
 </resources>
