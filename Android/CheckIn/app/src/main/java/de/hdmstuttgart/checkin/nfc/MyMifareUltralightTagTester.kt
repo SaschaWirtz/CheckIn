@@ -10,7 +10,7 @@ import java.nio.charset.Charset
 class MyMifareUltralightTagTester {
 
     fun writeTag(tag: Tag, data: NdefMessage) {
-        var currentTag: Ndef = Ndef.get(tag)
+        val currentTag: Ndef = Ndef.get(tag)
         try {
             currentTag.connect()
             currentTag.writeNdefMessage(data)
@@ -31,7 +31,8 @@ class MyMifareUltralightTagTester {
             val record = (messages[0] as NdefMessage).records[0]
             val payload: ByteArray = record.payload
             currentTag.close()
-            tv.text = payload.toString(Charset.defaultCharset())
+            val text = "You checked into "+payload.toString(Charset.defaultCharset())
+            tv.text = text
         }
     }
 }
