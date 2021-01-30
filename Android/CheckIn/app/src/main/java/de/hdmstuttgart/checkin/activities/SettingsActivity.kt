@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.Switch
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.SwitchCompat
 import de.hdmstuttgart.checkin.R
@@ -21,31 +22,24 @@ class SettingsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
 
-        val themeSwitch: SwitchCompat = findViewById(R.id.themeSwitch)
+        val themeSwitch: Switch = findViewById(R.id.themeSwitch)
         if (AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES) {
             themeSwitch.isChecked = TRUE
         }
 
-        themeSwitch.setOnCheckedChangeListener { _, _ ->
-            if (AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES) {
+        themeSwitch.setOnCheckedChangeListener { _, _->
+            if (themeSwitch.isChecked) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                reload()
+                recreate()
             } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                reload()
+                recreate()
             }
         }
 
         // button to get back to the home screen
         findViewById<Button>(R.id.backButtonSettings).setOnClickListener {
-            val homeIntent = Intent(this, HomeActivity::class.java)
-            startActivity(homeIntent)
+            this.onBackPressed()
         }
-
-    }
-    private fun reload() {
-        val reloadIntent = Intent(this, SettingsActivity::class.java)
-        finish()
-        startActivity(reloadIntent)
     }
 }
