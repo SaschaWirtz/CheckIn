@@ -12,4 +12,5 @@
     <string name="home_center_graphic">Center graphic</string>
     <string name="home_center_graphic_background">Center graphic background</string>
     <string name="home_center_textview_preset">Please scan a NFC tag!</string>
+    <string name="theme_switch">Dark Mode</string>
 </resources>
