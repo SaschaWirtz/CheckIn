@@ -45,6 +45,7 @@ class SettingsActivity : AppCompatActivity() {
     }
     private fun reload() {
         val reloadIntent = Intent(this, SettingsActivity::class.java)
+        finish()
         startActivity(reloadIntent)
     }
 }
