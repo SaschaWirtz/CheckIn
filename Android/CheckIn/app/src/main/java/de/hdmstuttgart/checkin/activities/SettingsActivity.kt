@@ -8,6 +8,7 @@ import android.widget.CompoundButton
 import android.widget.ImageView
 import android.widget.Switch
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.widget.SwitchCompat
 import de.hdmstuttgart.checkin.R
 
 class SettingsActivity : AppCompatActivity() {
@@ -22,7 +23,7 @@ class SettingsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
 
-        val themeSwitch: Switch = findViewById(R.id.themeSwitch)
+        val themeSwitch: SwitchCompat = findViewById(R.id.themeSwitch)
         if (AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES) {
             themeSwitch.isChecked
         }
