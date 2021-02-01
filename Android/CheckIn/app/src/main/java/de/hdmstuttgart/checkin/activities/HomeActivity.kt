@@ -54,6 +54,9 @@ class HomeActivity : AppCompatActivity() {
             val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
         }
+        findViewById<ImageView>(R.id.currentRoom2).setOnClickListener {
+            findViewById<TextView>(R.id.textView).setText(R.string.home_center_textview_preset)
+        }
 
         //Checking if the devices has NFC and if its enabled
         try{
