@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/yellow"
+    android:background="?attr/colorPrimary"
     tools:context=".activities.HomeActivity">
 
     <ImageView
@@ -26,7 +26,7 @@
         android:layout_width="152dp"
         android:layout_height="53dp"
         android:text="@string/checkin_header"
-        android:textColor="@color/purple"
+        android:textColor="?attr/colorSecondary"
         android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -143,7 +143,7 @@
             android:layout_weight="5"
             android:gravity="center"
             android:text="@string/statistics_button"
-            android:textColor="@color/white"
+            android:textColor="?attr/colorOnSecondary"
             android:textSize="40sp" />
 
         <Space
@@ -158,7 +158,7 @@
             android:layout_weight="5"
             android:gravity="center"
             android:text="@string/settings_icon"
-            android:textColor="@color/white"
+            android:textColor="?attr/colorOnSecondary"
             android:textSize="40sp" />
 
         <Space
@@ -190,7 +190,7 @@
             android:foregroundTint="#FFFFFF"
             android:gravity="center"
             android:text="@string/home_center_textview_preset"
-            android:textColor="@color/white"
+            android:textColor="?attr/colorOnSecondary"
             android:textSize="25sp" />
 
         <Space

@@ -1,6 +1,5 @@
 package de.hdmstuttgart.checkin.activities
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -10,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
 import de.hdmstuttgart.checkin.R
 import de.hdmstuttgart.checkin.db.*
+import de.hdmstuttgart.checkin.recyclerView.MyAdapter
 
 class StatisticsActivity : AppCompatActivity() {
 
@@ -35,12 +35,6 @@ class StatisticsActivity : AppCompatActivity() {
         findViewById<Button>(R.id.deleteButton).setOnClickListener {
             checkInDao.nukeTable()
             recyclerView.adapter = MyAdapter(checkInDao.readAllData())
-        }
-
-        // back button to home screen
-        findViewById<Button>(R.id.backButtonStatistics).setOnClickListener {
-            val intent = Intent(this, HomeActivity::class.java)
-            startActivity(intent)
         }
     }
 

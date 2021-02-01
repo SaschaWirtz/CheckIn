@@ -1,4 +1,4 @@
-package de.hdmstuttgart.checkin.activities
+package de.hdmstuttgart.checkin.recyclerView
 
 import android.view.View
 import android.view.ViewGroup
@@ -21,7 +21,7 @@ class MyAdapter : RecyclerView.Adapter<MyAdapter.ViewHolder> {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         // no need for a LayoutInflater instance
         // the custom view inflates itself
-        val itemView: CustomView  = CustomView(parent.context)
+        val itemView: CustomView = CustomView(parent.context)
         // manually set the CustomView's size
         itemView.layoutParams = ViewGroup.LayoutParams(
             ViewGroup.LayoutParams.MATCH_PARENT,

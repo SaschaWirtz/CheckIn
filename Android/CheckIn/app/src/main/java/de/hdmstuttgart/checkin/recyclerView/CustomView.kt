@@ -1,4 +1,4 @@
-package de.hdmstuttgart.checkin.activities
+package de.hdmstuttgart.checkin.recyclerView
 
 import android.content.Context
 import android.util.AttributeSet

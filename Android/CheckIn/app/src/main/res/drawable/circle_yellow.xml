@@ -3,7 +3,7 @@
     android:shape="oval">
     <solid
         android:angle="90"
-        android:color="@color/yellow" />
+        android:color="?attr/colorPrimary" />
     <size
         android:height="500px"
         android:width="500px" />
