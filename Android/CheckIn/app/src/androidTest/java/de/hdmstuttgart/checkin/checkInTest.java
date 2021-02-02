@@ -1,5 +1,6 @@
 package de.hdmstuttgart.checkin;
 
+import androidx.test.espresso.Espresso;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
@@ -12,6 +13,9 @@ import de.hdmstuttgart.checkin.activities.HomeActivity;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.action.ViewActions.pressBack;
+import static androidx.test.espresso.action.ViewActions.swipeLeft;
+import static androidx.test.espresso.action.ViewActions.swipeRight;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 
 @LargeTest
@@ -24,20 +28,37 @@ public class checkInTest {
     
     @Test
     public void checkInTest(){
+
+        //Opening the statistics activity and clearing the history
         onView(withId(R.id.statisticsButton))
                 .perform(click());
 
         onView(withId(R.id.deleteButton))
                 .perform(click());
 
-        onView(withId(R.id.backButtonStatistics))
+        Espresso.pressBack();
+
+        //Switching theme + showing all activities in the changed theme
+        onView(withId(R.id.settingsButton))
                 .perform(click());
+
+        onView(withId(R.id.themeSwitch))
+                .perform(swipeRight());
+
+        Espresso.pressBack();
+
+        onView(withId(R.id.statisticsButton))
+                .perform(click());
+
+        Espresso.pressBack();
 
         onView(withId(R.id.settingsButton))
                 .perform(click());
 
-        onView(withId(R.id.backButtonSettings))
-                .perform(click());
+        onView(withId(R.id.themeSwitch))
+                .perform(swipeLeft());
+
+        Espresso.pressBack();
     }
 
 }

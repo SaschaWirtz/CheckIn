@@ -28,7 +28,7 @@ class HomeActivity : AppCompatActivity() {
 
     //Setting nfc action
     private val doWrite = false
-
+    private val roomName = "Room001"
     //Variable that can deny the execution of a write, to prevent duplicated rooms
     private var doAgain = true
 
@@ -54,8 +54,8 @@ class HomeActivity : AppCompatActivity() {
             val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
         }
-        findViewById<ImageView>(R.id.currentRoom2).setOnClickListener {
-            findViewById<TextView>(R.id.textView).setText(R.string.home_center_textview_preset)
+        findViewById<TextView>(R.id.nfc_info_text).setOnClickListener {
+            findViewById<TextView>(R.id.nfc_info_text).setText(R.string.home_center_textview_preset)
         }
 
         //Checking if the devices has NFC and if its enabled
@@ -89,7 +89,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun initViews(){
-        resultText = findViewById(R.id.textView)
+        resultText = findViewById(R.id.nfc_info_text)
     }
 
     public override fun onPause() {
@@ -111,7 +111,7 @@ class HomeActivity : AppCompatActivity() {
         if(tagFromIntent != null){
             //Since this is only a base to work with you need to hardcode if you want to read or write
             if (doWrite && doAgain) {
-                val data = "Room001"
+                val data = roomName
                 //Writing the data as simple as possible onto the NFC tags as Bytes
                 val defRecord: NdefRecord = NdefRecord.createMime(data, data.toByteArray())
                 val defMessage = NdefMessage(arrayOf(defRecord))
